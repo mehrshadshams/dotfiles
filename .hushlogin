@@ -1,0 +1,3 @@
+# ~/.hushlogin - Prevent display of last login time and the MOTD
+# This file's existence tells the system to hide the last login information
+# and message of the day when you open a terminal session

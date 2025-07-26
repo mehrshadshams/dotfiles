@@ -1,53 +1,228 @@
-<p align="center"><img src="art/banner-2x.png"></p>
+# 🚀 Dotfiles for macOS
 
-## Introduction
+A comprehensive collection of dotfiles and scripts to set up and maintain a macOS development environment.
 
-This repository is based on the following repository
+## 📦 What's Included
 
-https://github.com/driesvints/dotfiles/tree/main
+### Core Configuration Files
+- **`.zshrc`** - Zsh shell configuration with Oh My Zsh, Powerlevel10k, and useful plugins
+- **`.gitconfig`** - Git configuration with aliases and helpful settings
+- **`.gitignore_global`** - Global Git ignore patterns
+- **`.gitattributes`** - Git attributes for consistent file handling and line endings
+- **`.vimrc`** - Vim configuration with Vundle and essential plugins
+- **`.tmux.conf`** - Tmux configuration with custom theme and plugins
+- **`.functions`** - Custom shell functions for enhanced productivity
+- **`.alias`** - Useful Docker and general aliases
+- **`.macos`** - macOS system preferences and settings
 
-## A Fresh macOS Setup
+### Development Tools Configuration
+- **`.editorconfig`** - Consistent coding styles across editors
+- **`.npmrc`** - npm package manager configuration
+- **`.gemrc`** - Ruby gems configuration
+- **`.pypirc`** - Python package index configuration
+- **`.inputrc`** - GNU Readline configuration for better shell experience
+- **`.wgetrc`** - wget download configuration
+- **`.curlrc`** - curl configuration
+- **`.hushlogin`** - Suppress login messages
 
-These instructions are for setting up new Mac devices. Instead, if you want to get started building your own dotfiles, you can [find those instructions below](#your-own-dotfiles).
+### Application Settings Templates
+- **`vscode-settings.json`** - VS Code editor settings template
+- **`.ssh_config`** - SSH configuration template (for ~/.ssh/config)
+- **`.docker-config.json`** - Docker configuration template
+- **`.mackup.cfg`** - Mackup backup configuration for app settings sync
 
-### Backup your data
+### Package Management
+- **`Brewfile`** - Homebrew packages, casks, and VS Code extensions
 
-If you're migrating from an existing Mac, you should first make sure to backup all of your existing data. Go through the checklist below to make sure you didn't forget anything before you migrate.
+### Automation Scripts
+- **`install.sh`** - Comprehensive installation script
+- **`backup.sh`** - Complete system backup with restore capabilities
+- **`system-info.sh`** - System information capture and documentation
+- **`capture-prefs.sh`** - macOS preferences and app settings capture
+- **`bootstrap.sh`** - Initial setup script
+- **`ssh.sh`** - SSH key generation script
+- **`aliases.sh`** - Additional shell aliases
 
-- Did you commit and push any changes/branches to your git repositories?
-- Did you remember to save all important documents from non-iCloud directories?
-- Did you save all of your work from apps which aren't synced through iCloud?
-- Did you remember to export important data from your local database?
-- Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
+## 🛠 Quick Setup
 
-### Setting up your Mac
+### Prerequisites
+- macOS (tested on latest versions)
+- Internet connection
+- Admin privileges
 
-After backing up your old Mac you may now follow these install instructions to setup a new one.
+### One-Command Installation
 
-1. Update macOS to the latest version through system preferences
-2. Setup an SSH key by using one of the two following methods
-   2.1. If you use 1Password, install it with the 1Password [SSH agent](https://developer.1password.com/docs/ssh/get-started/#step-3-turn-on-the-1password-ssh-agent) and sync your SSH keys locally.
-   2.2. Otherwise [generate a new public and private SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by running:
+```bash
+git clone https://github.com/mehrshadshams/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./install.sh
+```
 
-   ```zsh
-   curl https://raw.githubusercontent.com/driesvints/dotfiles/HEAD/ssh.sh | sh -s "<your-email-address>"
+### Manual Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mehrshadshams/dotfiles.git ~/.dotfiles
+   cd ~/.dotfiles
    ```
 
-3. Clone this repo to `~/.dotfiles` with:
+2. **Run the installation script:**
+   ```bash
+   ./install.sh
+   ```
 
-    ```zsh
-    git clone --recursive git@github.com:driesvints/dotfiles.git ~/.dotfiles
-    ```
+3. **Follow the prompts** to configure Git and decide on macOS settings
 
-4. Run the installation with:
+4. **Restart your terminal** or run:
+   ```bash
+   source ~/.zshrc
+   ```
 
-    ```zsh
-    cd ~/.dotfiles && ./bootstrap.sh
-    ```
+## 📋 What Gets Installed
 
-5. Restart your computer to finalize the process
+### Package Managers & Tools
+- **Homebrew** - Package manager for macOS
+- **Oh My Zsh** - Zsh framework with plugins
+- **Powerlevel10k** - Zsh theme
+- **Node Version Manager (nvm)** - Node.js version management
+- **pyenv** - Python version management
+- **rbenv** - Ruby version management
 
-Your Mac is now ready to use!
+### Development Tools
+- Git, Docker, kubectl, helm
+- Programming languages: Go, Python, Node.js, Java
+- Editors: Neovim, VS Code extensions
+- Databases: PostgreSQL client, MySQL client
+- Cloud tools: Azure CLI, Terraform, doctl
+
+### Applications (via Homebrew Cask)
+- Development: Warp terminal, Zed editor, PowerShell
+- Utilities: Hot (menu bar), Ice (menu organization)
+- .NET SDK versions
+
+## 🎨 Features
+
+### Zsh Configuration
+- **Powerlevel10k theme** with custom prompt
+- **Syntax highlighting** and **autosuggestions**
+- **History optimization** with deduplication
+- **Auto-completion** enhancements
+- **Tool integrations**: Docker, Kubernetes, AWS, etc.
+
+### Git Configuration
+- Useful aliases (`git l`, `git s`, `git ca`, etc.)
+- **Enhanced diff and log** formatting
+- **Automatic cleanup** and optimization
+- **Submodule support**
+
+### Vim Configuration
+- **Vundle plugin manager**
+- **File management** (NERDTree, CtrlP)
+- **Git integration** (Fugitive, GitGutter)
+- **Code editing** enhancements
+- **Dracula color scheme**
+
+### Tmux Configuration
+- **Custom key bindings** (Prefix: Ctrl-A)
+- **Mouse support** enabled
+- **Status bar** with system information
+- **Plugin management** with TPM
+- **Session and window** management tools
+
+## 🔧 Customization
+
+### Adding Your Own Configurations
+1. Edit the relevant dotfiles in the repository
+2. Create a `~/.zshrc.local` file for local-only settings
+3. Run `./install.sh` again to update symlinks
+
+### Backing Up Current Setup
+The installation script automatically backs up existing dotfiles to `~/.dotfiles_backup_[timestamp]`
+
+### Capturing System Information
+Generate a comprehensive system report:
+```bash
+./system-info.sh
+```
+
+## 📚 Useful Commands
+
+### Docker (from .alias)
+- `dps` - Show running containers
+- `dex <container>` - Execute bash in container
+- `dip` - Show container IP addresses
+- `drmc` - Remove all exited containers
+
+### Custom Functions (from .functions)
+- `mkd <dir>` - Create and enter directory
+- `weather [location]` - Get weather information
+- `extract <file>` - Extract any archive format
+- `killport <port>` - Kill process on specific port
+
+### Git Aliases
+- `git l` - Pretty log with graph
+- `git s` - Short status
+- `git ca` - Commit all changes
+- `git go <branch>` - Switch/create branch
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Capturing Current System Information
+Generate a comprehensive system report:
+```bash
+./system-info.sh
+```
+
+### Capturing macOS Preferences
+Save current system and app preferences:
+```bash
+./capture-prefs.sh
+```
+
+### Advanced Usage
+
+#### Multiple Machine Setup
+1. **Primary Machine**: Set up dotfiles and customize to your liking
+2. **Capture State**: Use `./backup.sh` to create a complete backup
+3. **Secondary Machines**: Clone repo and run `./install.sh`
+4. **Sync Changes**: Commit changes to repo and pull on other machines
+
+#### Selective Installation
+You can install components individually:
+```bash
+# Just install Homebrew packages
+brew bundle --file=./Brewfile
+
+# Just install VS Code extensions
+while read extension; do
+  code --install-extension $extension
+done < vscode-extensions.txt
+
+# Just run macOS preferences
+./.macos
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+Inspired by and based on various dotfiles repositories from the community, including:
+- [driesvints/dotfiles](https://github.com/driesvints/dotfiles)
+- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 > 💡 You can use a different location than `~/.dotfiles` if you want. Make sure you also update the references in the [`.zshrc`](./.zshrc#L2) and [`fresh.sh`](./fresh.sh#L20) files.
 

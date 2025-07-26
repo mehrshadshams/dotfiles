@@ -1,0 +1,17 @@
+# ~/.docker/config.json template - Docker configuration
+
+{
+  "auths": {},
+  "credsStore": "osxkeychain",
+  "experimental": "enabled",
+  "stackOrchestrator": "swarm",
+  "features": {
+    "buildkit": true
+  },
+  "buildx": {
+    "default": "desktop-linux"
+  },
+  "aliases": {
+    "builder": "buildx"
+  }
+}
