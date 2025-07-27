@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -U promptinit; promptinit
 autoload -U compinit; compinit -i
 
-prompt pure
+# prompt pure
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -167,3 +167,14 @@ export ITERMPLOT=rv
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/tofu tofu
 export PATH="/opt/homebrew/sbin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/bin:$PATH"
+alias python="/opt/homebrew/opt/python@3.13/bin/python3.13"
+alias pip="/opt/homebrew/opt/python@3.13/bin/pip3.13"
+
+. "$HOME/.local/bin/env"

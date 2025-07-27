@@ -232,14 +232,12 @@ if ! command -v nvm &> /dev/null; then
     success "nvm and latest Node.js LTS installed"
 fi
 
-# Install Python via pyenv if not present
-if ! command -v pyenv &> /dev/null; then
-    info "Installing pyenv..."
-    curl https://pyenv.run | bash
-    export PYENV_ROOT="$HOME/.pyenv"
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    success "pyenv installed"
+# Install Python via uv if not present
+if ! command -v uv &> /dev/null; then
+    info "Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | bash
+    eval "$(uv init -)"
+    success "uv installed"
 fi
 
 # Install Ruby via rbenv if not present
@@ -268,6 +266,15 @@ if [[ -f "$DOTFILES_DIR/.macos" ]]; then
         bash "$DOTFILES_DIR/.macos"
         success "macOS configuration applied"
     fi
+fi
+
+# Install Cargo
+if ! command -v cargo &> /dev/null; then
+    info "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    success "Rust installed"
+else
+    info "Rust already installed"
 fi
 
 # Final instructions

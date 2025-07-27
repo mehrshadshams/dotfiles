@@ -192,3 +192,7 @@
 [init]
 
 	templateDir = ~/.config/git/template/
+
+[user]
+	name = Mehrshad Shams
+	email = mehrshad.shams@gmail.com
