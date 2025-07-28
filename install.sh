@@ -119,6 +119,10 @@ if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]]; then
     success "zsh-syntax-highlighting installed"
 fi
 
+if [[ ! -d "$HOME/.zsh/pure" ]]; then
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+fi
+
 # Install Vim Vundle
 # VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
 # if [[ ! -d "$VUNDLE_DIR" ]]; then

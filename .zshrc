@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -U promptinit; promptinit
 autoload -U compinit; compinit -i
 
-# prompt pure
+prompt pure
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
