@@ -56,6 +56,18 @@ A comprehensive collection of dotfiles and scripts to set up and maintain a macO
 git clone https://github.com/mehrshadshams/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./install.sh
 ```
 
+### PowerShell Setup
+
+The PowerShell profile includes portable PATH entries and Git, Docker, and Kubernetes shortcuts. It avoids macOS-only configuration. The installer creates `D:\Home` and installs Scoop there by setting the user-level `SCOOP` environment variable before setup.
+
+```powershell
+git clone https://github.com/mehrshadshams/dotfiles.git $HOME/.dotfiles
+& $HOME/.dotfiles/install-powershell.ps1
+. $PROFILE
+```
+
+If script execution is restricted, run `Set-ExecutionPolicy -Scope Process Bypass` for the current session before installing.
+
 ### Manual Installation
 
 1. **Clone the repository:**
