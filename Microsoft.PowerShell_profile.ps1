@@ -1,15 +1,15 @@
 $dotfilesDirectory = Join-Path $HOME '.dotfiles'
 
 function Add-PathEntry {
-    param([string]$PathEntry)
+  param([string]$PathEntry)
 
-    if ((Test-Path $PathEntry) -and (($env:Path -split [IO.Path]::PathSeparator) -notcontains $PathEntry)) {
-        $env:Path = "$PathEntry$([IO.Path]::PathSeparator)$env:Path"
-    }
+  if ((Test-Path $PathEntry) -and (($env:Path -split [IO.Path]::PathSeparator) -notcontains $PathEntry)) {
+    $env:Path = "$PathEntry$([IO.Path]::PathSeparator)$env:Path"
+  }
 }
 
 if (-not $env:GOPATH) {
-    $env:GOPATH = Join-Path $HOME 'go'
+  $env:GOPATH = Join-Path $HOME 'go'
 }
 
 Add-PathEntry (Join-Path $HOME '.dotnet/tools')
@@ -40,10 +40,10 @@ function compose { docker compose @args }
 function ll { Get-ChildItem -Force @args }
 
 if (Get-Command kubectl -ErrorAction SilentlyContinue) {
-    Set-Alias -Name k -Value kubectl
-    kubectl completion powershell | Out-String | Invoke-Expression
+  Set-Alias -Name k -Value kubectl
+  kubectl completion powershell | Out-String | Invoke-Expression
 }
 
 if (Get-Command uv -ErrorAction SilentlyContinue) {
-    uv generate-shell-completion powershell | Out-String | Invoke-Expression
+  uv generate-shell-completion powershell | Out-String | Invoke-Expression
 }
