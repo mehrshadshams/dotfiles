@@ -1,15 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=/Users/mehrshadshams/go
+export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
-export PATH="/opt/homebrew/bin:/Users/mehrshadshams/.dotnet/tools:$HOME/.cargo/bin:$HOME/bin/:=/opt/homebrew/Cellar/qemu/8.1.2/bin/:$GOPATH/bin:$GOROOT/bin:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/.dotnet/tools:$HOME/.cargo/bin:$HOME/bin/:=/opt/homebrew/Cellar/qemu/8.1.2/bin/:$GOPATH/bin:$GOROOT/bin:$PATH"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mehrshadshams/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 export SQL_PASSWORD="MyS3cr3tP@ss"
 
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+export FLUTTER_ROOT="/opt/homebrew/share/flutter"
 
 export CLASSPATH=".:/usr/local/lib/antlr-4.13.0-complete.jar:$CLASSPATH"
 
@@ -18,7 +19,7 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.0-complete.jar:$CLASSPA
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 fpath+=$HOME/.zsh/pure
-fpath+=/Users/mehrshadshams/.completion/conda-zsh-completion
+fpath+=$HOME/.completion/conda-zsh-completion
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -121,14 +122,14 @@ prompt pure
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/mehrshadshams/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/mehrshadshams/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/mehrshadshams/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/mehrshadshams/anaconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -148,12 +149,6 @@ source ~/.alias
 compinit
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mehrshadshams/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mehrshadshams/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/mehrshadshams/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mehrshadshams/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 autoload bashcompinit && bashcompinit
 #az_version=$(az version | jq '.["azure-cli"]' | tr -d '"')
@@ -176,5 +171,20 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/python@3.13/bin:$PATH"
 alias python="/opt/homebrew/opt/python@3.13/bin/python3.13"
 alias pip="/opt/homebrew/opt/python@3.13/bin/pip3.13"
+alias ll="ls -la"
 
 . "$HOME/.local/bin/env"
+eval "$(uv generate-shell-completion zsh)"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# OpenClaw Completion
+[ -f "$HOME/.openclaw/completions/openclaw.zsh" ] && source "$HOME/.openclaw/completions/openclaw.zsh"
